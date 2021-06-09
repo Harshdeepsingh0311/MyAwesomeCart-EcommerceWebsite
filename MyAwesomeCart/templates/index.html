@@ -1,0 +1,23 @@
+{% extends 'basic.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block css %}
+.white{
+        color: white;
+        }
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid py-4">
+        <div class="p-5 mb-4 bg-dark rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold white">Welcome To MyAwesomeCart</h1>
+            <h3 class="display-5 fw-bold white">Shop the Dope...</h3><hr>
+            <p class="col-md-8 fs-4 white">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+              <a href="/shop"><button class="btn btn-danger btn-lg mx-3 my-3" type="button">Go To Shop</button></a>
+              <a href="/blog"><button class="btn btn-danger btn-lg mx-3 my-3" type="button">Go To Blog</button></a>
+          </div>
+        </div>
+    </div>
+{% endblock %}
