@@ -4,17 +4,20 @@
     <div class="row mt-4">
         <div class="col-md-8 blog-main">
             <h3 class="pb-4 mb-4 font-italic border-bottom">
-                {{post.tilte}}
+                {{post.title}}
             </h3>
             <div class="blog-post">
                 <h2 class="blog-post-title">{{post.heading0}}</h2>
-                <p class="blog-post-meta">{{post.pub_date}}<a href="#">CodeWithHarry</a></p>
+                <p class="blog-post-meta">{{post.pub_date}} <a href="https://github.com/Harshdeepsingh0311">Harshdeep Singh (c) 2021</a></p>
                 <h2>{{post.head0}}</h2>
                 <p>{{post.chead0}}</p>
                 <h2>{{post.head1}}</h2>
                 <p>{{post.chead1}}</p>
                 <h2>{{post.head2}}</h2>
                 <p>{{post.chead2}}</p>
+                <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-numposts="1" data-colorscheme="dark"></div>
+                
+                
             </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
         <aside class="col-md-4 blog-sidebar">
@@ -22,6 +25,15 @@
                 <h4 class="font-italic">About</h4>
                 <p class="mb-0">My Awesome Cart <em>started out as a small project and is now</em> the fastest growing e-commerce stores of all times in india and abroad.</p>
             </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src="/media/{{post.thumbnail}}" class="bd-placeholder-img" width="200" height="250"
+                    aria-label="Placeholder: Thumbnail"/>
+            
+
+            </div>
+            <div class="fb-like my-2" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true">
+            </div>
+
             <div class="p-4">
                 <h4 class="font-italic">Elsewhere</h4>
                 <ol class="list-unstyled">
