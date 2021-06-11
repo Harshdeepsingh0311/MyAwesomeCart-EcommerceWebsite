@@ -9,14 +9,12 @@
             </ul>
 
             <nav aria-label="breadcrumb">
-  <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalPrice"></span></b>. Enter your details below & place your order. Thanks for using My Awesome Cart!</li>
-  </ol>
-</nav>
-
-
-
-            
+                <ol class="breadcrumb mt-3">
+                    <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span
+                                id="totalPrice"></span></b>. Enter your details below & place your order. Thanks for
+                        using My Awesome Cart!</li>
+                </ol>
+            </nav>
         </div>
     </div>
     <div class="col my-4">
@@ -40,7 +38,8 @@
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Address line 2</label>
-                <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+                <input type="text" class="form-control" id="address2" name="address2"
+                    placeholder="Apartment, studio, or floor">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -49,7 +48,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">State</label>
-                    <input type="text" class="form-control" id="state" name="state"  placeholder="Enter State">
+                    <input type="text" class="form-control" id="state" name="state" placeholder="Enter State">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
@@ -67,44 +66,46 @@
 {% endblock %}
 {% block js %}
 <script>
-if (localStorage.getItem('cart') == null) {
-    var cart = {};
-} else {
-    cart = JSON.parse(localStorage.getItem('cart'));
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
 
-}
-console.log(cart);
-var sum = 0;
-var totalPrice = 0;
+    }
+    console.log(cart);
+    var sum = 0;
+    var totalPrice = 0;
 
-if ($.isEmptyObject(cart)) {
-    //if object is empty
-    mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
-    $('#items').append(mystr);
-} else {
-    for (item in cart) {
-        let name = cart[item][1];
-        let qty = cart[item][0];
-        let itemPrice = cart[item][2];
-        sum = sum + qty;
-        totalPrice = totalPrice + qty* itemPrice;
-        mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+    if ($.isEmptyObject(cart)) {
+        //if object is empty
+        mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+        $('#items').append(mystr);
+    } else {
+        for (item in cart) {
+            let name = cart[item][1];
+            let qty = cart[item][0];
+            let itemPrice = cart[item][2];
+            sum = sum + qty;
+            totalPrice = totalPrice + qty * itemPrice;
+            mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                     ${name}
                     <span class="badge badge-primary badge-pill">${qty}</span>
                 </li>`
-        $('#items').append(mystr);
+            $('#items').append(mystr);
+        }
+
     }
 
-}
+    document.getElementById('cart').innerHTML = sum;
+    document.getElementById('totalPrice').innerHTML = totalPrice;
+    $('#itemsJson').val(JSON.stringify(cart));
+    {% if thank %}
 
-document.getElementById('cart').innerHTML = sum;
-document.getElementById('totalPrice').innerHTML = totalPrice;
-$('#itemsJson').val(JSON.stringify(cart));
-{% if thank %}
+    localStorage.clear();
 
-localStorage.clear();
+    {% endif %}
 
-{% endif %}
-$('#amount').val($('#totalPrice').html())
+    $('#amount').val($('#totalPrice').html());
+
 </script>
 {% endblock %}

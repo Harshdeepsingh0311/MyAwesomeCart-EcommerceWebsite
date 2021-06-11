@@ -1,0 +1,15 @@
+{% extends 'basic.html' %}
+{% block title %}Payment Status{%endblock%}
+{% block body %}
+    <div class="container">
+        {{response}}
+        <div class="col my-4">
+            <h2>Payment Status regarding your order ID  {{response.ORDERID}}}</h2>
+            {%if response.RESPCODE == '01' %}
+                ORDER SUCCESS
+            {%else%}
+                ORDER FAILURE
+            {%endif%}
+        </div>
+    </div>
+{%endblock%}
